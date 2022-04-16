@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DomerWarehouse</string>
+    <string name="hint_login">Логин</string>
+    <string name="hint_password">Пароль</string>
+    <string name="log_in">Войти</string>
+    <string name="account">Регистрация</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="hint_confirm_password">Повторите пароль</string>
+    <string name="hint_email">Почта</string>
 </resources>

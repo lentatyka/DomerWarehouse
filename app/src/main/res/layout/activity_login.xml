@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_fragment_container"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:name="com.lentatyka.domerwarehouse.presentation.login.LoginFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.login.LoginActivity"
+    tools:layout ="@layout/fragment_login">
+
+</androidx.fragment.app.FragmentContainerView>

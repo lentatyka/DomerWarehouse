@@ -1,7 +1,8 @@
-package com.lentatyka.domerwarehouse
+package com.lentatyka.domerwarehouse.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.lentatyka.domerwarehouse.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
