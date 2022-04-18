@@ -4,17 +4,14 @@ import android.text.TextUtils
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import androidx.lifecycle.*
-import com.lentatyka.domerwarehouse.R
 import com.lentatyka.domerwarehouse.common.Response
-import com.lentatyka.domerwarehouse.di.login.ActivityScope
-import com.lentatyka.domerwarehouse.domain.login.LoginUseCase
+import com.lentatyka.domerwarehouse.domain.login.usecase.LoginUseCase
 import com.lentatyka.domerwarehouse.domain.login.UserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-@ActivityScope
 abstract class LoginViewModel(
     private val loginUseCase: LoginUseCase<UserInfo>
 ) : ViewModel() {

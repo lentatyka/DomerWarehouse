@@ -10,4 +10,6 @@
     <string name="bad_email">Неверный адрес</string>
     <string name="empty_password">Введите пароль</string>
     <string name="bad_confirm_password">Пароли не совпадают</string>
+    <string name="account_success_creation">Аккаунт успено создан</string>
+    <string name="ok">Ок</string>
 </resources>

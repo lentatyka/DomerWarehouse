@@ -16,14 +16,11 @@ import com.lentatyka.domerwarehouse.presentation.login.viewmodel.LoginViewModel
 import com.lentatyka.domerwarehouse.presentation.login.viewmodel.SignInViewModel
 import javax.inject.Inject
 
-private const val ARG_PARAM_EMAIL = "email"
 
 class SignInFragment : Fragment() {
 
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
-
-    private var email: String? = null
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -38,9 +35,6 @@ class SignInFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            email = it.getString(ARG_PARAM_EMAIL)
-        }
     }
 
     override fun onCreateView(
@@ -98,11 +92,6 @@ class SignInFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(email: String) =
-            SignInFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM_EMAIL, email)
-                }
-            }
+        fun newInstance(email: String) = SignInFragment()
     }
 }

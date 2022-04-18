@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import com.lentatyka.domerwarehouse.R
 import com.lentatyka.domerwarehouse.common.Response
 import com.lentatyka.domerwarehouse.databinding.FragmentSignUpBinding
 import com.lentatyka.domerwarehouse.presentation.login.viewmodel.LoginViewModel
@@ -59,10 +61,24 @@ class SignUpFragment : Fragment() {
                     showToast(responce.message)
                 }
                 is Response.Success -> {
-                    Log.d("TAG", "answer-> ${responce.data}")
+                    showSnackBar()
                 }
             }
         }
+
+        binding.btnLogIn.setOnClickListener {
+            showSnackBar()
+        }
+    }
+
+    private fun showSnackBar() {
+        Snackbar.make(
+            requireView(),
+            getString(R.string.account_success_creation),
+            Snackbar.LENGTH_INDEFINITE,
+        ).setAction(R.string.ok){
+            requireActivity().supportFragmentManager.popBackStack()
+        }.show()
     }
 
     private fun showToast(message: String) {

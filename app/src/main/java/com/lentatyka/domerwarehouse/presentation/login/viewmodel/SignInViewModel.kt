@@ -1,12 +1,10 @@
 package com.lentatyka.domerwarehouse.presentation.login.viewmodel
 
-import com.lentatyka.domerwarehouse.di.login.ActivityScope
-import com.lentatyka.domerwarehouse.domain.login.SignInUseCase
+import com.lentatyka.domerwarehouse.domain.login.usecase.SignInUseCase
 import javax.inject.Inject
 
-@ActivityScope
 class SignInViewModel @Inject constructor(
-    private val signInUseCase: SignInUseCase
+    signInUseCase: SignInUseCase
 ):LoginViewModel(signInUseCase) {
 
     fun signIn(email: String, password: String) {

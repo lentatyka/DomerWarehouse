@@ -5,7 +5,6 @@ import com.lentatyka.domerwarehouse.presentation.login.SignInFragment
 import com.lentatyka.domerwarehouse.presentation.login.SignUpFragment
 import dagger.Subcomponent
 
-@ActivityScope
 @Subcomponent(modules = [LoginModule::class])
 interface LoginComponent {
 
