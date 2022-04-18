@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".DomerApp"
         android:theme="@style/Theme.DomerWarehouse">
         <activity
             android:name=".presentation.login.LoginActivity"

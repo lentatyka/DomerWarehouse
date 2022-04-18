@@ -4,16 +4,17 @@ import com.lentatyka.domerwarehouse.common.Response
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class SignUpUseCase @Inject constructor(
+class SignInUseCase @Inject constructor(
     private val loginRepository: LoginRepository
-    ):LoginUseCase<UserInfo> {
+) : LoginUseCase<UserInfo> {
 
-    override fun invoke(email: String, password: String) = flow {
+    override fun invoke(email: String, password: String) = flow{
         emit(Response.Loading)
         try {
-            emit(Response.Success(UserInfo("TEST")))
+            emit(Response.Success(UserInfo("123Dw2S#")))
         }catch (e: Exception){
-            emit(Response.Error(e.localizedMessage ?: "temp answer..."))
+            //todo temp solution
+            emit(Response.Error(e.localizedMessage ?: "error..."))
         }
     }
 }
