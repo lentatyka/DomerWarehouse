@@ -1,6 +1,5 @@
 package com.lentatyka.domerwarehouse.presentation.login.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import android.view.View.OnFocusChangeListener
@@ -14,10 +13,6 @@ class SignUpViewModel @Inject constructor(
     private val _confirmPasswordError = MutableLiveData<Boolean>()
     val confirmPasswordError: LiveData<Boolean> get() = _confirmPasswordError
 
-    init {
-        Log.d("TAG", "${confirmPasswordError.value}")
-    }
-
     fun signUp(email: String, password: String, confirmPassword: String) {
         if (isEmailValid(email) &&
             isPasswordValid(password) &&
@@ -27,7 +22,7 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    fun isConfirmPasswordValid(password: String, confirmPassword: String): Boolean {
+    private fun isConfirmPasswordValid(password: String, confirmPassword: String): Boolean {
         return if (password != confirmPassword) {
             _confirmPasswordError.value = true
             false

@@ -9,13 +9,13 @@ import javax.inject.Inject
 
 class SignUpUseCase @Inject constructor(
     @SignUp private val loginRepository: LoginRepository
-) : LoginUseCase<UserInfo> {
+) : LoginUseCase<Nothing> {
 
     override fun invoke(email: String, password: String) = flow {
         emit(Response.Loading)
         try {
             loginRepository(email, password)
-            emit(Response.Success(UserInfo("TEST")))
+            emit(Response.Success(null))
         } catch (e: Exception) {
             emit(Response.Error(e.localizedMessage ?: "temp answer..."))
         }

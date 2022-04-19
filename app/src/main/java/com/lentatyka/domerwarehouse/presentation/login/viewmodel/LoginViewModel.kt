@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 abstract class LoginViewModel(
-    private val loginUseCase: LoginUseCase<UserInfo>
+    private val loginUseCase: LoginUseCase<Nothing>
 ) : ViewModel() {
 
     private val _emailError = MutableLiveData<Boolean>()
@@ -25,7 +25,7 @@ abstract class LoginViewModel(
     private val _response = MutableLiveData<Response<out UserInfo>>()
     val response: LiveData<Response<out UserInfo>> get() = _response
 
-    fun isEmailValid(email: String): Boolean {
+    protected fun isEmailValid(email: String): Boolean {
         return if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _emailError.value = true
             false
@@ -33,7 +33,7 @@ abstract class LoginViewModel(
             true
     }
 
-    fun isPasswordValid(password: String): Boolean {
+    protected fun isPasswordValid(password: String): Boolean {
         return if (TextUtils.isEmpty(password)) {
             _passwordError.value = true
             false
@@ -41,7 +41,7 @@ abstract class LoginViewModel(
             true
     }
 
-    fun login(email: String, password: String) {
+    protected fun login(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             loginUseCase(email, password).onEach {
                 _response.postValue(it)
