@@ -52,13 +52,13 @@ class SignUpFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.response.observe(viewLifecycleOwner) { responce ->
-            when (responce) {
+        viewModel.response.observe(viewLifecycleOwner) { response ->
+            when (response) {
                 is Response.Loading -> {
                     //showLoading
                 }
                 is Response.Error -> {
-                    showToast(responce.message)
+                    showToast(response.message)
                 }
                 is Response.Success -> {
                     showSnackBar()

@@ -2,7 +2,6 @@ package com.lentatyka.domerwarehouse.presentation.login
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,10 +30,6 @@ class SignInFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (activity as LoginActivity).loginComponent.inject(this)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -66,16 +61,16 @@ class SignInFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.response.observe(viewLifecycleOwner) { responce ->
-            when (responce) {
+        viewModel.response.observe(viewLifecycleOwner) { response ->
+            when (response) {
                 is Response.Loading -> {
                     //showLoading
                 }
                 is Response.Error -> {
-                    showToast(responce.message)
+                    showToast(response.message)
                 }
                 is Response.Success -> {
-                    Log.d("TAG", "answer-> ${responce.data}")
+
                 }
             }
         }
@@ -92,6 +87,6 @@ class SignInFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(email: String) = SignInFragment()
+        fun newInstance() = SignInFragment()
     }
 }

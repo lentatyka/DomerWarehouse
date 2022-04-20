@@ -2,7 +2,6 @@ package com.lentatyka.domerwarehouse.domain.login.usecase
 
 import com.lentatyka.domerwarehouse.common.Response
 import com.lentatyka.domerwarehouse.di.login.SignUp
-import com.lentatyka.domerwarehouse.domain.login.UserInfo
 import com.lentatyka.domerwarehouse.domain.login.repository.LoginRepository
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

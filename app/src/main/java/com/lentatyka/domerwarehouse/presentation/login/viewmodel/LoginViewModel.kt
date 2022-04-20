@@ -6,7 +6,6 @@ import android.view.View.OnFocusChangeListener
 import androidx.lifecycle.*
 import com.lentatyka.domerwarehouse.common.Response
 import com.lentatyka.domerwarehouse.domain.login.usecase.LoginUseCase
-import com.lentatyka.domerwarehouse.domain.login.UserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -22,8 +21,8 @@ abstract class LoginViewModel(
     private val _passwordError = MutableLiveData<Boolean>()
     val passwordError: LiveData<Boolean> get() = _passwordError
 
-    private val _response = MutableLiveData<Response<out UserInfo>>()
-    val response: LiveData<Response<out UserInfo>> get() = _response
+    private val _response = MutableLiveData<Response<Nothing>>()
+    val response: LiveData<Response<Nothing>> get() = _response
 
     protected fun isEmailValid(email: String): Boolean {
         return if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
