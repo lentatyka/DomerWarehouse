@@ -2,6 +2,8 @@ package com.lentatyka.domerwarehouse.di.main
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.lentatyka.domerwarehouse.data.main.room.AppDao
 import com.lentatyka.domerwarehouse.data.main.room.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -9,11 +11,15 @@ import dagger.Provides
 @Module
 class RoomModule {
 
+
+    @ActivityScope
     @Provides
-    fun provideRoomDatabase(applicationContext: Context): AppDatabase {
+    fun provideRoomDao(applicationContext: Context, appDatabase: AppDatabase): AppDao {
         return Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "product-database"
-        ).build()
+        )
+            .build()
+            .appDao()
     }
 }

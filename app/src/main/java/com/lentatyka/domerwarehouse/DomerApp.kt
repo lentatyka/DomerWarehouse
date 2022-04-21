@@ -11,7 +11,7 @@ open class DomerApp:Application() {
     }
 
     open fun initializeComponent(): AppComponent {
-        return DaggerAppComponent.factory().create()
+        return DaggerAppComponent.factory().create(applicationContext)
     }
 
 }
