@@ -1,6 +1,5 @@
 package com.lentatyka.domerwarehouse.data.main.background
 
-import android.util.Log
 import com.google.firebase.database.*
 import javax.inject.Inject
 import kotlin.coroutines.resume
