@@ -1,6 +1,5 @@
 package com.lentatyka.domerwarehouse.data.login.network
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject

@@ -6,11 +6,12 @@ import com.lentatyka.domerwarehouse.data.main.room.AppDao
 import com.lentatyka.domerwarehouse.data.main.room.AppDatabase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class RoomModule {
 
-    @ActivityScope
+    @Singleton
     @Provides
     fun provideRoomDao(applicationContext: Context): AppDao {
         return Room.databaseBuilder(

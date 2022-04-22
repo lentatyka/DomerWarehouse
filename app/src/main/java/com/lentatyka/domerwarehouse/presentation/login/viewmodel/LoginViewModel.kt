@@ -3,7 +3,10 @@ package com.lentatyka.domerwarehouse.presentation.login.viewmodel
 import android.text.TextUtils
 import android.view.View
 import android.view.View.OnFocusChangeListener
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.lentatyka.domerwarehouse.common.Response
 import com.lentatyka.domerwarehouse.domain.login.usecase.LoginUseCase
 import kotlinx.coroutines.Dispatchers

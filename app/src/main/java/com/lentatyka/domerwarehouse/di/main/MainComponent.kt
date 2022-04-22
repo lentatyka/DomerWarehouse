@@ -5,7 +5,7 @@ import com.lentatyka.domerwarehouse.presentation.main.product.ProductFragment
 import dagger.Subcomponent
 
 @ActivityScope
-@Subcomponent(modules = [ProductModule::class, RoomModule::class])
+@Subcomponent(modules = [ProductModule::class])
 interface MainComponent {
 
     fun inject(activity: MainActivity)

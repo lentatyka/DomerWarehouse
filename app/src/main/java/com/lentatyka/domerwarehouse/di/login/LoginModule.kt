@@ -6,13 +6,12 @@ import com.lentatyka.domerwarehouse.data.login.network.SignInFirebase
 import com.lentatyka.domerwarehouse.data.login.network.SignUpFirebase
 import com.lentatyka.domerwarehouse.data.login.repository.SignInRepositoryImpl
 import com.lentatyka.domerwarehouse.data.login.repository.SignUpRepositoryImpl
-import com.lentatyka.domerwarehouse.di.ViewModelKey
+import com.lentatyka.domerwarehouse.di.viewmodel.ViewModelKey
 import com.lentatyka.domerwarehouse.domain.login.repository.LoginRepository
 import com.lentatyka.domerwarehouse.presentation.login.viewmodel.SignInViewModel
 import com.lentatyka.domerwarehouse.presentation.login.viewmodel.SignUpViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
 import javax.inject.Qualifier
 

@@ -1,8 +1,8 @@
 package com.lentatyka.domerwarehouse.presentation.login.viewmodel
 
+import android.view.View.OnFocusChangeListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import android.view.View.OnFocusChangeListener
 import com.lentatyka.domerwarehouse.domain.login.usecase.SignUpUseCase
 import javax.inject.Inject
 

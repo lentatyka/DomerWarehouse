@@ -1,4 +1,4 @@
-package com.lentatyka.domerwarehouse.di
+package com.lentatyka.domerwarehouse.di.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
 import com.lentatyka.domerwarehouse.presentation.ViewModelFactory

@@ -2,7 +2,6 @@ package com.lentatyka.domerwarehouse.domain.main.product
 
 import com.lentatyka.domerwarehouse.data.main.product.ProductDataMapper
 import com.lentatyka.domerwarehouse.data.main.product.ProductRepository
-import com.lentatyka.domerwarehouse.data.main.room.ProductData
 import javax.inject.Inject
 
 interface ProductInteractor {
