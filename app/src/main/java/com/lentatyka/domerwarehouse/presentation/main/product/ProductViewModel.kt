@@ -1,6 +1,5 @@
 package com.lentatyka.domerwarehouse.presentation.main.product
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,14 +14,20 @@ class ProductViewModel @Inject constructor(
     private val interactor: ProductInteractor
 ): ViewModel() {
 
-    private val _productList = MutableLiveData<List<ProductDomain>>()
-    val productList:LiveData<List<ProductDomain>> get() = _productList
+    private val _productList = MutableLiveData<List<ProductDomain?>>()
+    val productList:LiveData<List<ProductDomain?>> get() = _productList
 
-    fun test(){
-        viewModelScope.launch(Dispatchers.IO){
-            val z = interactor("%Dod%")
-            Log.d("TAG", "${z.size}")
-            _productList.postValue(z)
+
+    fun search(query: String) {
+        if(query.isNotEmpty()){
+            viewModelScope.launch(Dispatchers.IO){
+                val result = interactor("%$query%")
+                _productList.postValue(result)
+            }
+        }else{
+            //Не будет делать запрос с пустум полем. Вроде логично =)
+            _productList.value = emptyList()
         }
+
     }
 }

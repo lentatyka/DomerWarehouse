@@ -13,14 +13,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var loginComponent: LoginComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Intent(this, MainActivity::class.java).also {
-            it.addFlags(
-                Intent.FLAG_ACTIVITY_NEW_TASK or
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK or
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP
-            )
-            startActivity(it)
-        }
         loginComponent = (application as DomerApp).appComponent.loginComponent().create()
         loginComponent.inject(this)
         super.onCreate(savedInstanceState)
