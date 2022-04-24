@@ -1,4 +1,4 @@
-package com.lentatyka.domerwarehouse.presentation.main.fragments
+package com.lentatyka.domerwarehouse.presentation.main.editor
 
 import android.os.Bundle
 import android.view.LayoutInflater

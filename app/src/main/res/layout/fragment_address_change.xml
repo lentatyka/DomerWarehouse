@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
-    tools:context=".presentation.main.fragments.AddressChangeFragment">
+    tools:context=".presentation.main.editor.AddressChangeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/address_change_recycler"
@@ -14,29 +14,61 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/address_item" />
 
-    <TextView
-        android:id="@+id/tv_address_add"
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/address_add"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/address_change_recycler" />
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_address_add"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_address_add">
+        <TableRow>
+            <TextView
+                android:text="@string/address_add"
+                android:textAlignment="center"
+                android:layout_span="4" />
+        </TableRow>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_address_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="15"/>
+        <TableRow android:layout_width="0dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:text="@string/warehouse"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="@string/row"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="@string/shalving"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="@string/cell"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow android:layout_width="0dp">
+
+            <Spinner android:entries="@array/warehouse_array" />
+
+            <EditText
+                android:inputType="number"
+                android:maxLength="2" />
+
+            <EditText
+                android:inputType="number"
+                android:maxLength="2" />
+
+            <EditText
+                android:inputType="number"
+                android:maxLength="2" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:layout_span="4"
+                android:text="@string/add"/>
+        </TableRow>
+
+    </TableLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

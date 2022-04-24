@@ -2,7 +2,7 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/login_fragment_container"
     xmlns:tools="http://schemas.android.com/tools"
-    android:name="com.lentatyka.domerwarehouse.presentation.main.product.ProductFragment"
+    android:name="com.lentatyka.domerwarehouse.presentation.main.editor.AddressChangeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.main.MainActivity"

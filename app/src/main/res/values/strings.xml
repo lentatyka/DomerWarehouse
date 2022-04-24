@@ -13,15 +13,25 @@
     <string name="account_success_creation">Аккаунт успено создан</string>
     <string name="ok">Ок</string>
     <string name="delete">Удалить</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="address_add">Добавить адрес</string>
     <string name="warehouse">Склад</string>
     <string name="row">Ряд</string>
+    <string name="shalving">Стеллаж</string>
+    <string name="cell">Ячейка</string>
     <string name="article">Арт.</string>
     <string name="color">Цвет</string>
     <string name="size">Размер</string>
     <string name="address">Адреса</string>
     <string name="search_title">Поиск</string>
     <string name="search_hint">Артикул</string>
+    <string name="add">Добавить</string>
+    <string-array name="warehouse_array">
+        <item>ВА</item>
+        <item>ВБ</item>
+        <item>НА</item>
+        <item>НБ</item>
+        <item>НВ</item>
+        <item>НГ</item>
+        <item>ХА</item>
+    </string-array>
 </resources>
