@@ -9,7 +9,9 @@ import android.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lentatyka.domerwarehouse.R
 import com.lentatyka.domerwarehouse.databinding.FragmentProductBinding
 import com.lentatyka.domerwarehouse.presentation.ViewModelFactory
@@ -61,9 +63,11 @@ class ProductFragment : Fragment() {
 
     private fun setAdapter() {
         productAdapter = ProductAdapter()
+        val itemDecoration = DividerItemDecoration(requireContext(), RecyclerView.VERTICAL)
         binding.databaseRecycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = productAdapter
+            addItemDecoration(itemDecoration)
         }
     }
 
@@ -85,7 +89,7 @@ class ProductFragment : Fragment() {
 
             setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    TODO("Not yet implemented")
+                    return true
                 }
 
                 override fun onQueryTextChange(newText: String): Boolean {

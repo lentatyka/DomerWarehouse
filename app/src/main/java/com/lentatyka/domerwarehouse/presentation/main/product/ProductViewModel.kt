@@ -12,22 +12,20 @@ import javax.inject.Inject
 
 class ProductViewModel @Inject constructor(
     private val interactor: ProductInteractor
-): ViewModel() {
+) : ViewModel() {
 
     private val _productList = MutableLiveData<List<ProductDomain?>>()
-    val productList:LiveData<List<ProductDomain?>> get() = _productList
+    val productList: LiveData<List<ProductDomain?>> get() = _productList
 
 
     fun search(query: String) {
-        if(query.isNotEmpty()){
-            viewModelScope.launch(Dispatchers.IO){
-                val result = interactor("%$query%")
-                _productList.postValue(result)
-            }
-        }else{
-            //Не будет делать запрос с пустум полем. Вроде логично =)
-            _productList.value = emptyList()
+        val queryList = query.split(" ").map {
+            "%$it%"
         }
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = interactor(queryList)
+            _productList.postValue(result)
 
+        }
     }
 }
