@@ -11,6 +11,6 @@ class ProductDataMapper @Inject constructor(): Mapper<ProductData, ProductDomain
         name = data.name,
         color = data.color ?: "-",
         size = data.size ?: "-",
-        address = data.address
+        address = if(data.address == null) "-" else data.address.joinToString(separator = " > ")
     )
 }

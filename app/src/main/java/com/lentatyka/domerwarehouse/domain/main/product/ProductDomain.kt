@@ -6,5 +6,5 @@ data class ProductDomain(
     val name: String,
     val color: String,
     val size: String,
-    val address: List<String>?
+    val address: String
 )
