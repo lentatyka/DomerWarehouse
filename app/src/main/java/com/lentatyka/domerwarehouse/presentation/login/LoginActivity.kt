@@ -53,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
                     showToast(response.message)
                 }
                 is Response.Success -> {
+                    showToast(getString(R.string.welcome, response.data?.email))
                     startMainActivity()
                 }
             }
