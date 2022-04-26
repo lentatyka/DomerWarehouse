@@ -1,4 +1,4 @@
-package com.lentatyka.domerwarehouse.di.main
+package com.lentatyka.domerwarehouse.di
 
 import android.content.Context
 import androidx.room.Room

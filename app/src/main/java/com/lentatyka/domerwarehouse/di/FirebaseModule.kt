@@ -6,7 +6,6 @@ import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 
-//todo replace it to Main sub component
 @Module
 class FirebaseModule {
 

@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/login_fragment_container"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:name="com.lentatyka.domerwarehouse.presentation.login.SignInFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.login.LoginActivity"
-    tools:layout ="@layout/fragment_sign_in"/>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lentatyka.domerwarehouse.presentation.login.LoginViewModel" />
+        <import type="android.view.View"/>
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        tools:context=".presentation.login.LoginActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/hint_login"
+            app:endIconMode="clear_text"
+            app:error="@{viewmodel.emailError ? @string/bad_email : null}"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toTopOf="@id/layout_password"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:startIconDrawable="@drawable/ic_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                app:onFocusChangeListener="@{viewmodel.emailFocusChangeListener}"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/hint_password"
+            app:errorEnabled="true"
+            app:error="@{viewmodel.passwordError ? @string/empty_password : null}"
+            app:endIconMode="password_toggle"
+            app:layout_constraintBottom_toTopOf="@+id/btn_log_in"
+            app:layout_constraintTop_toBottomOf="@id/layout_email"
+            app:startIconDrawable="@drawable/ic_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                app:onFocusChangeListener="@{viewmodel.passwordFocusChangeListener}"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_log_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="@{loading ? false : true}"
+            android:onClick="@{()->viewmodel.login(etEmail.getText().toString(), etPassword.getText().toString())}"
+            android:text="@string/log_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_password" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btn_log_in"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            android:indeterminate="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

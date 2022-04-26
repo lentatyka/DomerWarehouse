@@ -2,7 +2,6 @@ package com.lentatyka.domerwarehouse.di
 
 import com.lentatyka.domerwarehouse.data.main.background.FirebaseRepository
 import com.lentatyka.domerwarehouse.data.main.background.RoomRepository
-import com.lentatyka.domerwarehouse.di.main.RoomModule
 import dagger.Binds
 import dagger.Module
 
