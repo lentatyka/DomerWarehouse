@@ -1,16 +1,16 @@
-package com.lentatyka.domerwarehouse.presentation.main.product
+package com.lentatyka.domerwarehouse.presentation.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lentatyka.domerwarehouse.domain.main.product.ProductDomain
-import com.lentatyka.domerwarehouse.domain.main.product.ProductInteractor
+import com.lentatyka.domerwarehouse.domain.main.ProductDomain
+import com.lentatyka.domerwarehouse.domain.main.ProductInteractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ProductViewModel @Inject constructor(
+class MainViewModel @Inject constructor(
     private val interactor: ProductInteractor
 ) : ViewModel() {
 
@@ -25,7 +25,6 @@ class ProductViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val result = interactor(queryList)
             _productList.postValue(result)
-
         }
     }
 }

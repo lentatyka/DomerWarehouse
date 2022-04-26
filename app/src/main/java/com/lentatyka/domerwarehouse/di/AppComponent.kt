@@ -5,7 +5,6 @@ import com.lentatyka.domerwarehouse.DomerApp
 import com.lentatyka.domerwarehouse.di.login.LoginComponent
 import com.lentatyka.domerwarehouse.di.main.MainComponent
 import com.lentatyka.domerwarehouse.di.viewmodel.ViewModelFactoryModule
-import com.lentatyka.domerwarehouse.presentation.main.editor.AddressChangeViewModel
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

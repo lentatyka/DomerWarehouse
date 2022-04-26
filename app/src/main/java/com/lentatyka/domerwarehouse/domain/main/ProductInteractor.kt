@@ -1,4 +1,4 @@
-package com.lentatyka.domerwarehouse.domain.main.product
+package com.lentatyka.domerwarehouse.domain.main
 
 import com.lentatyka.domerwarehouse.data.main.product.ProductDataMapper
 import com.lentatyka.domerwarehouse.data.main.product.ProductRepository

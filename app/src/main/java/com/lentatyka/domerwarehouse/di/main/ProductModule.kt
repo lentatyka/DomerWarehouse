@@ -3,10 +3,8 @@ package com.lentatyka.domerwarehouse.di.main
 import androidx.lifecycle.ViewModel
 import com.lentatyka.domerwarehouse.data.main.product.ProductRepository
 import com.lentatyka.domerwarehouse.di.viewmodel.ViewModelKey
-import com.lentatyka.domerwarehouse.domain.main.product.ProductInteractor
-import com.lentatyka.domerwarehouse.presentation.main.editor.AddressChangeFragment
-import com.lentatyka.domerwarehouse.presentation.main.editor.AddressChangeViewModel
-import com.lentatyka.domerwarehouse.presentation.main.product.ProductViewModel
+import com.lentatyka.domerwarehouse.domain.main.ProductInteractor
+import com.lentatyka.domerwarehouse.presentation.main.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -16,13 +14,13 @@ abstract class ProductModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ProductViewModel::class)
-    abstract fun bindProductViewModel(viewModel: ProductViewModel): ViewModel
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindProductViewModel(viewModel: MainViewModel): ViewModel
 
     @Binds
     abstract fun bindProductRepository(repo: ProductRepository.Base):ProductRepository
 
     @Binds
-    abstract fun bindProductInteractor(interactor: ProductInteractor.Base):ProductInteractor
+    abstract fun bindProductInteractor(interactor: ProductInteractor.Base): ProductInteractor
 
 }

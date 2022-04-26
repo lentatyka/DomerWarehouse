@@ -7,7 +7,7 @@
 
         <variable
             name="product"
-            type="com.lentatyka.domerwarehouse.domain.main.product.ProductDomain" />
+            type="com.lentatyka.domerwarehouse.domain.main.ProductDomain" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

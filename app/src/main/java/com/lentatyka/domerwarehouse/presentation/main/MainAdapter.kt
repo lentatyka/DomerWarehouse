@@ -1,4 +1,4 @@
-package com.lentatyka.domerwarehouse.presentation.main.product
+package com.lentatyka.domerwarehouse.presentation.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lentatyka.domerwarehouse.databinding.ProductItemBinding
-import com.lentatyka.domerwarehouse.domain.main.product.ProductDomain
+import com.lentatyka.domerwarehouse.domain.main.ProductDomain
 
-class ProductAdapter : ListAdapter<ProductDomain, ProductAdapter.ProductViewHolder>(DiffCallback) {
+class MainAdapter() : ListAdapter<ProductDomain, MainAdapter.ProductViewHolder>(DiffCallback) {
 
     class ProductViewHolder(
         private val binding: ProductItemBinding
@@ -28,7 +28,8 @@ class ProductAdapter : ListAdapter<ProductDomain, ProductAdapter.ProductViewHold
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        holder.bind(item)
     }
 
     companion object {

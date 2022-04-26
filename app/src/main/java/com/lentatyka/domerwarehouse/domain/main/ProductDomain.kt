@@ -1,4 +1,4 @@
-package com.lentatyka.domerwarehouse.domain.main.product
+package com.lentatyka.domerwarehouse.domain.main
 
 
 data class ProductDomain(
