@@ -19,7 +19,6 @@ class FirebaseWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         val list = fb.getProductList()
-        Log.d("TAG", "DATA CHANGED")
         productRepo(list)
         return Result.success()
     }

@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.lentatyka.domerwarehouse.data.main.product.ProductRepository
 import com.lentatyka.domerwarehouse.di.viewmodel.ViewModelKey
 import com.lentatyka.domerwarehouse.domain.main.product.ProductInteractor
+import com.lentatyka.domerwarehouse.presentation.main.editor.AddressChangeFragment
+import com.lentatyka.domerwarehouse.presentation.main.editor.AddressChangeViewModel
 import com.lentatyka.domerwarehouse.presentation.main.product.ProductViewModel
 import dagger.Binds
 import dagger.Module
@@ -22,4 +24,5 @@ abstract class ProductModule {
 
     @Binds
     abstract fun bindProductInteractor(interactor: ProductInteractor.Base):ProductInteractor
+
 }

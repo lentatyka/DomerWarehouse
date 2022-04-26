@@ -15,6 +15,7 @@ interface ProductRepository {
     class Base @Inject constructor(
         private val appDao: AppDao
     ): ProductRepository {
+
         override suspend fun getProductByName(name: String): List<ProductData> =
             appDao.getProductByName(name)
 

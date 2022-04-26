@@ -27,11 +27,11 @@ class SampleWorkerFactory @Inject constructor(
         appContext: Context,
         workerClassName: String,
         workerParameters: WorkerParameters,
-    ): ListenableWorker? {
+    ): ListenableWorker {
         return when (workerClassName) {
             FirebaseWorker::class.java.name ->
                 helloWorldWorkerFactory.create(appContext, workerParameters)
-            else -> null
+            else -> throw IllegalArgumentException("Unknown worker")
         }
     }
 }

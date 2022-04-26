@@ -9,7 +9,7 @@ import androidx.room.Query
 interface AppDao {
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id =:id")
-    suspend fun getProductById(id: Int): ProductData
+    suspend fun getProductById(id: String): ProductData
 
     @Query("SELECT * FROM $TABLE_NAME WHERE name LIKE :name")
     suspend fun getProductByName(name: String): List<ProductData>
