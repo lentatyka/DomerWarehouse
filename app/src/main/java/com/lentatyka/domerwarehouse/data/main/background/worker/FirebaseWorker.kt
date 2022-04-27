@@ -23,10 +23,16 @@ class FirebaseWorker @AssistedInject constructor(
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        val list = fb.getProductList()
-        productRepo(list)
-        makeStatusNotification(context.getString(R.string.data_loading, list.size), context)
-        return Result.success()
+        makeStatusNotification(context.getString(R.string.start_loading), context)
+        return try {
+            val list = fb.getProductList()
+            productRepo(list)
+            makeStatusNotification(context.getString(R.string.data_loading, list.size), context)
+            Result.success()
+        }catch (e: Exception){
+            makeStatusNotification(context.getString(R.string.error_loading), context)
+            Result.failure()
+        }
     }
 
     @AssistedFactory
@@ -54,7 +60,7 @@ class FirebaseWorker @AssistedInject constructor(
         // Create the notification
         val builder = NotificationCompat.Builder(context, "CHANNEL_ID")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("NOTIFICATION_TITLE")
+            .setContentTitle(context.getString(R.string.loading))
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
 

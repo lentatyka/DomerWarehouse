@@ -3,6 +3,7 @@ package com.lentatyka.domerwarehouse.data.main.background
 import com.google.firebase.database.*
 import javax.inject.Inject
 import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 interface FirebaseRepository {
@@ -22,18 +23,15 @@ interface FirebaseRepository {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val productList = mutableListOf<ProductDto>()
                         snapshot.children.forEach {
-                            val currentId = it.key!!
                             it.getValue(ProductDto::class.java)?.let {productDto ->
-                                productList += productDto.copy(
-                                    id = currentId
-                                )
+                                productList += productDto
                             }
                         }
                         continuation.resume(productList)
                     }
 
                     override fun onCancelled(error: DatabaseError) {
-                        //todo exception
+                        continuation.resumeWithException(error.toException())
                     }
                 }
             )
