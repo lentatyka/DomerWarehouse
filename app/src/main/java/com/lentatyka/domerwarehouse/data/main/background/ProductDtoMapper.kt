@@ -10,7 +10,7 @@ class ProductDtoMapper @Inject constructor() : Mapper<List<ProductDto>, List<Pro
         data.map {
             ProductData(
                 id = it.id,
-                name = it.article,
+                name = it.name,
                 color = it.color,
                 size = it.size,
                 address = it.address

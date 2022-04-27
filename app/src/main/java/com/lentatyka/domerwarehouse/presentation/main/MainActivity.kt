@@ -51,9 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         setAdapter()
         setViewModel()
-        WorkManager.getInstance(this).enqueue(
-            OneTimeWorkRequestBuilder<FirebaseWorker>().build()
-        )
     }
 
     private fun setAdapter() {

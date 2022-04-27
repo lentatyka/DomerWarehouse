@@ -6,9 +6,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.lentatyka.domerwarehouse.DomerApp
 import com.lentatyka.domerwarehouse.R
 import com.lentatyka.domerwarehouse.common.Response
+import com.lentatyka.domerwarehouse.data.main.background.worker.FirebaseWorker
 import com.lentatyka.domerwarehouse.databinding.ActivityLoginBinding
 import com.lentatyka.domerwarehouse.di.login.LoginComponent
 import com.lentatyka.domerwarehouse.presentation.main.MainActivity
@@ -42,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
 
-
         viewModel.response.observe(this) { response ->
             when (response) {
                 is Response.Loading -> {
@@ -61,10 +63,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startMainActivity() {
+        loadDatabase()
         Intent(this, MainActivity::class.java).also {
             startActivity(it)
             finish()
         }
+    }
+
+    private fun loadDatabase() {
+        WorkManager.getInstance(this).enqueue(
+            OneTimeWorkRequestBuilder<FirebaseWorker>().build()
+        )
     }
 
     private fun showToast(message: String) {
