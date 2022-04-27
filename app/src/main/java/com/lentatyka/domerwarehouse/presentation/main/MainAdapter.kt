@@ -2,18 +2,20 @@ package com.lentatyka.domerwarehouse.presentation.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.lentatyka.domerwarehouse.R
+import com.lentatyka.domerwarehouse.data.main.room.ProductData
 import com.lentatyka.domerwarehouse.databinding.ProductItemBinding
-import com.lentatyka.domerwarehouse.domain.main.ProductDomain
 
-class MainAdapter() : ListAdapter<ProductDomain, MainAdapter.ProductViewHolder>(DiffCallback) {
+class MainAdapter() : ListAdapter<ProductData, MainAdapter.ProductViewHolder>(DiffCallback) {
 
     class ProductViewHolder(
         private val binding: ProductItemBinding
     ) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item: ProductDomain){
+        fun bind(item: ProductData){
             binding.product = item
         }
     }
@@ -29,18 +31,26 @@ class MainAdapter() : ListAdapter<ProductDomain, MainAdapter.ProductViewHolder>(
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val item = getItem(position)
+        val color = if(position % 2 == 0){
+            R.color.beige_100
+        }else
+            R.color.beige_50
+
+            holder.itemView.setBackgroundColor(
+                ContextCompat.getColor(holder.itemView.context, color))
         holder.bind(item)
     }
 
+
     companion object {
-        val DiffCallback = object : DiffUtil.ItemCallback<ProductDomain>() {
-            override fun areItemsTheSame(oldItem: ProductDomain, newItem: ProductDomain): Boolean {
+        val DiffCallback = object : DiffUtil.ItemCallback<ProductData>() {
+            override fun areItemsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: ProductDomain,
-                newItem: ProductDomain
+                oldItem: ProductData,
+                newItem: ProductData
             ): Boolean {
                 return oldItem == newItem
             }

@@ -7,7 +7,7 @@
 
         <variable
             name="product"
-            type="com.lentatyka.domerwarehouse.domain.main.ProductDomain" />
+            type="com.lentatyka.domerwarehouse.data.main.room.ProductData"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{product.name}"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_article"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_article"
@@ -46,7 +47,8 @@
             android:id="@+id/tv_color_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{product.color}"
+            android:text="@{product.color == null ? @string/default_value : product.color}"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_color"
             app:layout_constraintEnd_toEndOf="@+id/tv_article_name"
             app:layout_constraintTop_toTopOf="@+id/tv_color"
@@ -65,7 +67,8 @@
             android:id="@+id/tv_size_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{product.size}"
+            android:text="@{product.size == null ? @string/default_value : product.size}"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_size"
             app:layout_constraintEnd_toEndOf="@+id/tv_article_name"
             app:layout_constraintTop_toTopOf="@+id/tv_size"
@@ -82,11 +85,13 @@
 
         <TextView
             android:id="@+id/tv_address_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{product.address[0]}"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_address"
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+            app:address="@{product.address}"
             app:layout_constraintEnd_toEndOf="@+id/tv_article_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_address"
             app:layout_constraintTop_toTopOf="@+id/tv_address"
             tools:text="XX-4-2-1" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,6 @@
     <string name="loading">Загрузка…</string>
     <string name="start_loading">Загрузка начата</string>
     <string name="error_loading">Ошибка загрузки</string>
+    <string name="founded">Найдено: %1$d</string>
+    <string name="default_value">-</string>
 </resources>

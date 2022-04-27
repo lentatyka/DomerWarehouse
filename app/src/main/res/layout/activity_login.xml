@@ -72,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/orange_800"
             android:enabled="@{loading ? false : true}"
             android:onClick="@{()->viewmodel.login(etEmail.getText().toString(), etPassword.getText().toString())}"
             android:text="@string/log_in"

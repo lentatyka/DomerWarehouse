@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setViewModel() {
         viewModel.productList.observe(this){
+            binding.numbers = it.size
             mainAdapter.submitList(it)
         }
     }
