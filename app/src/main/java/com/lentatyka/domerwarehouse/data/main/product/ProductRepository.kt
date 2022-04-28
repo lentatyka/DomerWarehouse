@@ -1,33 +1,43 @@
 package com.lentatyka.domerwarehouse.data.main.product
 
+import android.util.Log
+import androidx.paging.PagingSource
 import com.lentatyka.domerwarehouse.data.main.room.AppDao
 import com.lentatyka.domerwarehouse.data.main.room.ProductData
 import javax.inject.Inject
 
 interface ProductRepository {
 
-    suspend fun getProductByName(name: String):List<ProductData>
+    fun getProductByName(name: String): PagingSource<Int, ProductData>
 
-    suspend fun getProductByNameColor(name: String, color: String):List<ProductData>
+    fun getProductByNameColor(name: String, color: String): PagingSource<Int, ProductData>
 
-    suspend fun getProductByNameColorSize(name: String, color: String, size: String):List<ProductData>
+    fun getProductByNameColorSize(
+        name: String, color: String, size: String
+    ): PagingSource<Int, ProductData>
 
     class Base @Inject constructor(
         private val appDao: AppDao
-    ): ProductRepository {
+    ) : ProductRepository {
 
-        override suspend fun getProductByName(name: String): List<ProductData> =
-            appDao.getProductByName(name)
+        override fun getProductByName(name: String): PagingSource<Int, ProductData> {
+            Log.d("TAG", "REPO: $name")
+            return appDao.getProductByName(name)
 
-        override suspend fun getProductByNameColor(name: String, color: String): List<ProductData> {
+        }
+
+        override fun getProductByNameColor(
+            name: String,
+            color: String
+        ): PagingSource<Int, ProductData> {
             return appDao.getProductByNameColor(name, color)
         }
 
-        override suspend fun getProductByNameColorSize(
+        override fun getProductByNameColorSize(
             name: String,
             color: String,
             size: String
-        ): List<ProductData> {
+        ): PagingSource<Int, ProductData> {
             return appDao.getProductByNameColorSize(name, color, size)
         }
     }

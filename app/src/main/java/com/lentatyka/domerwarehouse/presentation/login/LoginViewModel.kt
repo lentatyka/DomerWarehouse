@@ -1,7 +1,6 @@
 package com.lentatyka.domerwarehouse.presentation.login
 
 import android.text.TextUtils
-import android.view.View
 import android.view.View.OnFocusChangeListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -55,13 +54,13 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun getEmailFocusChangeListener() = OnFocusChangeListener { v: View, hasFocus: Boolean ->
+    fun getEmailFocusChangeListener() = OnFocusChangeListener { _, hasFocus: Boolean ->
         if (hasFocus) {
             _emailError.value = false
         }
     }
 
-    fun getPasswordFocusChangeListener() = OnFocusChangeListener { v: View, hasFocus: Boolean ->
+    fun getPasswordFocusChangeListener() = OnFocusChangeListener { _, hasFocus: Boolean ->
         if (hasFocus) {
             _passwordError.value = false
         }

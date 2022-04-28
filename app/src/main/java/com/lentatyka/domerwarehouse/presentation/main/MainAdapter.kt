@@ -3,14 +3,14 @@ package com.lentatyka.domerwarehouse.presentation.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lentatyka.domerwarehouse.R
 import com.lentatyka.domerwarehouse.data.main.room.ProductData
 import com.lentatyka.domerwarehouse.databinding.ProductItemBinding
 
-class MainAdapter() : ListAdapter<ProductData, MainAdapter.ProductViewHolder>(DiffCallback) {
+class MainAdapter : PagingDataAdapter<ProductData, MainAdapter.ProductViewHolder>(DiffCallback) {
 
     class ProductViewHolder(
         private val binding: ProductItemBinding
@@ -29,17 +29,21 @@ class MainAdapter() : ListAdapter<ProductData, MainAdapter.ProductViewHolder>(Di
         return ProductViewHolder(binding)
     }
 
+
+
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val item = getItem(position)
-        val color = if(position % 2 == 0){
-            R.color.beige_100
-        }else
-            R.color.beige_50
+        getItem(position)?.let {
+            val color = if(position % 2 == 0){
+                R.color.beige_100
+            }else
+                R.color.beige_50
 
             holder.itemView.setBackgroundColor(
                 ContextCompat.getColor(holder.itemView.context, color))
-        holder.bind(item)
+            holder.bind(it)
+        }
     }
+
 
 
     companion object {
