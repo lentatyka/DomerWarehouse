@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
+
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this, viewModeFactory)[MainViewModel::class.java]
     }
