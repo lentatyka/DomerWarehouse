@@ -1,6 +1,6 @@
 package com.lentatyka.domerwarehouse.data.main.product
 
-import android.util.Log
+
 import androidx.paging.PagingSource
 import com.lentatyka.domerwarehouse.data.main.room.AppDao
 import com.lentatyka.domerwarehouse.data.main.room.ProductData
@@ -21,7 +21,6 @@ interface ProductRepository {
     ) : ProductRepository {
 
         override fun getProductByName(name: String): PagingSource<Int, ProductData> {
-            Log.d("TAG", "REPO: $name")
             return appDao.getProductByName(name)
 
         }

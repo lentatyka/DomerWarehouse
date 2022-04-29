@@ -4,7 +4,6 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
@@ -74,9 +73,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAdapter() {
         mainAdapter = MainAdapter()
-        mainAdapter.addOnPagesUpdatedListener {
-            Log.d("TAG", "PAGE UPDATED")
-        }
         val decoration = DividerItemDecoration(this, RecyclerView.VERTICAL)
         binding.databaseRecycler.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
