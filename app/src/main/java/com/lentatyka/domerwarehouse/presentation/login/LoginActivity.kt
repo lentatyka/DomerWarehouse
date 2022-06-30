@@ -3,9 +3,9 @@ package com.lentatyka.domerwarehouse.presentation.login
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.lentatyka.domerwarehouse.DomerApp
@@ -15,20 +15,17 @@ import com.lentatyka.domerwarehouse.data.main.background.worker.FirebaseWorker
 import com.lentatyka.domerwarehouse.databinding.ActivityLoginBinding
 import com.lentatyka.domerwarehouse.di.login.LoginComponent
 import com.lentatyka.domerwarehouse.presentation.main.MainActivity
-import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity() {
 
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: LoginViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+    private val viewModel: LoginViewModel by viewModels {
+        loginComponent.viewModelFactory()
     }
 
-    lateinit var loginComponent: LoginComponent
+    private lateinit var loginComponent: LoginComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

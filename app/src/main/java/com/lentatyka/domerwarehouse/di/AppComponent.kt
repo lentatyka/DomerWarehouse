@@ -4,7 +4,6 @@ import android.content.Context
 import com.lentatyka.domerwarehouse.DomerApp
 import com.lentatyka.domerwarehouse.di.login.LoginComponent
 import com.lentatyka.domerwarehouse.di.main.MainComponent
-import com.lentatyka.domerwarehouse.di.viewmodel.ViewModelFactoryModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -12,7 +11,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        ViewModelFactoryModule::class,
         AppSubComponent::class,
         FirebaseModule::class,
         BackgroundModule::class

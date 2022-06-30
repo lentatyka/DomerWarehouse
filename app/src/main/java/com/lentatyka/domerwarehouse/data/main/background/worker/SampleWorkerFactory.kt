@@ -2,7 +2,6 @@ package com.lentatyka.domerwarehouse.data.main.background.worker
 
 import android.content.Context
 import androidx.work.ListenableWorker
-import androidx.work.WorkManager
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import javax.inject.Inject

@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,15 +22,14 @@ import com.lentatyka.domerwarehouse.data.main.background.worker.FirebaseWorker
 import com.lentatyka.domerwarehouse.data.main.background.worker.SampleWorkerFactory
 import com.lentatyka.domerwarehouse.databinding.ActivityMainBinding
 import com.lentatyka.domerwarehouse.di.main.MainComponent
-import com.lentatyka.domerwarehouse.presentation.ViewModelFactory
 import com.lentatyka.domerwarehouse.presentation.login.LoginActivity
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var mainComponent: MainComponent
+    private lateinit var mainComponent: MainComponent
 
-    lateinit var mainAdapter: MainAdapter
+    private lateinit var mainAdapter: MainAdapter
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
@@ -38,24 +37,24 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var fbAuth: FirebaseAuth
 
-    @Inject
-    lateinit var viewModeFactory: ViewModelFactory
 
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this, viewModeFactory)[MainViewModel::class.java]
+    private val viewModel: MainViewModel by viewModels {
+        mainComponent.viewModelFactory()
     }
 
     @Inject
     lateinit var sampleWorkerFactory: SampleWorkerFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         mainComponent = (application as DomerApp).appComponent.mainComponent().create()
         mainComponent.inject(this)
+
+        //Bad idea. May be splash screen good practice!
         if (fbAuth.currentUser == null){
             //user are not authorized. GOTO LoginActivity
             startLoginActivity()
         }
+
         super.onCreate(savedInstanceState)
 
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
